@@ -1,0 +1,30 @@
+<div class="card" ng-if="vm.post.date">
+    <div class="card-header" ng-if="(vm.post.user)"><a href="#!/id/{{key}}">{{vm.post.user.last_name + ' ' + vm.post.user.first_name}}</a></div>
+    <div class="card-header" ng-if="(vm.post.group)"><a href="#!/id/{{key}}">{{vm.post.group.name}}</a></div>
+    <div class="card-block">
+        <p class="card-text">{{vm.post.text}}</p>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="(key, attachment) in post.attachments" ng-if="(attachment.type === 'photo')" alt="Card image cap">
+                <img style="width: 100%;" ng-src="{{attachment.photo.src_big}}" data-toggle="modal" data-target="#{{attachment.photo.pid}}" >
+
+                <div class="modal fade" id="{{attachment.photo.pid}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <img style="height: 100%; width: auto; margin: 0 auto;" ng-src="{{attachment.photo.src_big}}" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <small class="text-muted">{{vm.post.date | date:'short'}}</small>
+        <small class="text-muted float-md-right"><i class="fa fa-heart" aria-hidden="true"></i> {{vm.post.likes.count}}</small>
+    </div>
+</div>
+
+<div class="alert alert-warning" role="alert" ng-if="(vm.post == undefined)">
+    <strong>Oops!</strong> We don't found anything
+</div>
