@@ -5,23 +5,49 @@
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="ngVkNewsfeedSearch" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>VK Newsfeed Search</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <link href='css/angular-carousel.min.css' rel='stylesheet' type='text/css'>
+    <link href='css/demo.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	
+	<nav class="navbar navbar-light bg-faded">
 
-<div class="container" ng-view></div>
+	  <a class="navbar-brand" href="/">
+	  	
+	    <i class="fa fa-vk" aria-hidden="true"></i> Newsfeed Search
+	  </a>
+	</nav>
+		<div class="container" ng-view></div>
 
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script src="vendors/angular.js"></script>
-<script src="vendors/angular-route.js"></script>
-<script src="app.js"></script>
-<script src="SearchView/search-view.js"></script>
-<script src="NewsfeedsView/newsfeeds-view.js"></script>
-<script src="NewsfeedView/newsfeed-view.js"></script>
+	<div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      	<img src="">
+	    </div>
+	  </div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<script src="vendors/angular.js"></script>
+	<script src="vendors/angular-route.js"></script>
+	<script src="vendors/angular-animate.js"></script>
+	<script type="text/javascript" src="https://code.angularjs.org/1.6.2/angular-sanitize.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-touch.min.js"></script>
+
+    <script src="vendors/angular-carousel.min.js"></script>
+
+	<script src="app.js"></script>
+	<script src="SearchView/search-view.js"></script>
+	<script src="NewsfeedsView/newsfeeds-view.js"></script>
+	<script src="NewsfeedView/newsfeed-view.js"></script>
 
 </body>
 </html>

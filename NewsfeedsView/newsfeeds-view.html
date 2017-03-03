@@ -1,31 +1,44 @@
-<div class="card" ng-repeat="(key, post) in vm.posts" ng-if="post.date">
-    <div class="card-header" ng-if="(post.user)"><a href="#!/id/{{key}}">{{post.user.last_name + ' ' + post.user.first_name}}</a></div>
-    <div class="card-header" ng-if="(post.group)"><a href="#!/id/{{key}}">{{post.group.name}}</a></div>
-    <div class="card-block">
-        <p class="card-text">{{post.text}}</p>
-    </div>
-    <div class="card-block">
-        <div class="row">
-            <div class="col-md-4" ng-repeat="(key, attachment) in post.attachments" ng-if="(attachment.type === 'photo')" alt="Card image cap">
-                <img style="width: 100%;" ng-src="{{attachment.photo.src_big}}" data-toggle="modal" data-target="#{{attachment.photo.pid}}" >
+<div class="row justify-content-md-center" ng-repeat="(key, post) in vm.posts" ng-if="post.date">
+    <div class="card col-md-8">
+        <a href="#!/id/{{key}}" class="card-header" ng-if="(post.user)">
+            <img ng-src="{{post.user.photo}}" class="profile-img">
+            <span>{{post.user.last_name + ' ' + post.user.first_name}}</span>
+        </a>
+        <a href="#!/id/{{key}}" class="card-header" ng-if="(post.group)">
+            <img ng-src="{{post.group.photo}}" class="profile-img">
+            <span>{{post.group.name}}</span>
+        </a>
+        <div class="card-block" ng-if="post.text">
+            <p class="card-text" ng-bind-html="post.text | replaceIDs"></p>
+        </div>
+        <div class="card-block" ng-if="post.attachments">
 
-                <div class="modal fade" id="{{attachment.photo.pid}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <img style="height: 100%; width: auto; margin: 0 auto;" ng-src="{{attachment.photo.src_big}}" >
-                        </div>
+            <ul rn-carousel rn-carousel-controls rn-carousel-buffered>
+                <li ng-repeat="(key, attachment) in post.attachments | filterPostType:'photo'">
+                    <div ng-click="vm.showPhoto('{{attachment.photo.src_big}}')" ng-style="{'background-image': 'url(' + attachment.photo.src_big + ')'}"  class="bgimage">
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
+
+            <a ng-href="{{attachment.link.url}}" target="_blank" ng-repeat="(key, attachment) in post.attachments | filterPostType:'link'">
+                {{attachment.link.title}}
+            </a>
 
         </div>
-    </div>
-    <div class="card-footer text-muted">
-        <small class="text-muted">{{post.date | date:'short'}}</small>
-        <small class="text-muted float-md-right"><i class="fa fa-heart" aria-hidden="true"></i> {{post.likes.count}}</small>
+        <div class="card-footer text-muted">
+            <small class="text-muted">{{post.date | date:'short'}}</small>
+            <small class="text-muted float-md-right">
+                <i class="fa fa-comment" aria-hidden="true"></i> {{post.comments.count}} &nbsp;&nbsp;&nbsp;
+                <i class="fa fa-heart" aria-hidden="true"></i> {{post.likes.count}}
+            </small>
+        </div>
     </div>
 </div>
 
-<div class="alert alert-warning" role="alert" ng-if="(vm.posts.length === 1 && vm.posts[0] == 0)">
-    <strong>Oops!</strong> We don't found anything
+
+
+<div class="row justify-content-md-center"  ng-if="(vm.posts.length === 1 && vm.posts[0] == 0)">
+    <div class="alert alert-warning col-md-6" role="alert">
+        <strong>Oops!</strong> We don't found anything
+    </div>
 </div>
