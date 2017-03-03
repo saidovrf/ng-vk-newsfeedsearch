@@ -1,12 +1,8 @@
 <div class="row justify-content-md-center" ng-if="vm.post">
     <div class="card col-md-8">
-        <div class="card-header" ng-if="(vm.post.user)">
-            <img ng-src="{{vm.post.user.photo}}" class="profile-img">
-            <span>{{vm.post.user.last_name + ' ' + vm.post.user.first_name}}</span>
-        </div>
-        <div class="card-header" ng-if="(vm.post.group)">
-            <img ng-src="{{vm.post.group.photo}}" class="profile-img">
-            <span>{{vm.post.group.name}}</span>
+        <div class="card-header">
+            <img ng-src="{{vm.post | getInfo:'photo':vm.groups:vm.profiles}}" class="profile-img">
+            <span>{{vm.post | getInfo:'name':vm.groups:vm.profiles}}</span>
         </div>
         <div class="card-block" ng-if="vm.post.text">
             <p class="card-text" ng-bind-html="vm.post.text | replaceIDs"></p>
@@ -15,7 +11,7 @@
 
             <ul rn-carousel rn-carousel-controls rn-carousel-buffered>
                 <li ng-repeat="(key, attachment) in vm.post.attachments | filterPostType:'photo'">
-                    <div ng-click="vm.showPhoto('{{attachment.photo.src_big}}')" ng-style="{'background-image': 'url(' + attachment.photo.src_big + ')'}"  class="bgimage">
+                    <div ng-click="vm.showPhoto('{{attachment.photo.photo_604}}')" ng-style="{'background-image': 'url(' + attachment.photo.photo_604 + ')'}"  class="bgimage">
                     </div>
                 </li>
             </ul>
@@ -34,7 +30,6 @@
         </div>
     </div>
 </div>
-
 
 
 <div class="row justify-content-md-center"  ng-if="!vm.post">

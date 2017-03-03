@@ -1,12 +1,8 @@
 <div class="row justify-content-md-center" ng-repeat="(key, post) in vm.posts" ng-if="post.date">
     <div class="card col-md-8">
-        <a href="#!/id/{{key}}" class="card-header" ng-if="(post.user)">
-            <img ng-src="{{post.user.photo}}" class="profile-img">
-            <span>{{post.user.last_name + ' ' + post.user.first_name}}</span>
-        </a>
-        <a href="#!/id/{{key}}" class="card-header" ng-if="(post.group)">
-            <img ng-src="{{post.group.photo}}" class="profile-img">
-            <span>{{post.group.name}}</span>
+        <a href="#!/post/{{key}}" class="card-header">
+            <img ng-src="{{post | getInfo:'photo':vm.groups:vm.profiles}}" class="profile-img">
+            <span>{{post | getInfo:'name':vm.groups:vm.profiles}}</span>
         </a>
         <div class="card-block" ng-if="post.text">
             <p class="card-text" ng-bind-html="post.text | replaceIDs"></p>
@@ -15,7 +11,7 @@
 
             <ul rn-carousel rn-carousel-controls rn-carousel-buffered>
                 <li ng-repeat="(key, attachment) in post.attachments | filterPostType:'photo'">
-                    <div ng-click="vm.showPhoto('{{attachment.photo.src_big}}')" ng-style="{'background-image': 'url(' + attachment.photo.src_big + ')'}"  class="bgimage">
+                    <div ng-click="vm.showPhoto('{{attachment.photo.photo_604}}')" ng-style="{'background-image': 'url(' + attachment.photo.photo_604 + ')'}"  class="bgimage">
                     </div>
                 </li>
             </ul>
@@ -35,7 +31,7 @@
     </div>
 </div>
 
-
+<button ng-click="vm.loadMore()" class="btn btn-outline-primary" ng-if="(vm.posts.length >= 1 && vm.posts[0] != 0)">Load more..</button>
 
 <div class="row justify-content-md-center"  ng-if="(vm.posts.length === 1 && vm.posts[0] == 0)">
     <div class="alert alert-warning col-md-6" role="alert">
