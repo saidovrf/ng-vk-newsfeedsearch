@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/common.css">
 
     <link href='css/angular-carousel.min.css' rel='stylesheet' type='text/css'>
-    <link href='css/demo.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	
@@ -23,7 +22,12 @@
 	    <i class="fa fa-vk" aria-hidden="true"></i> Newsfeed Search
 	  </a>
 	</nav>
-		<div class="container" ng-view></div>
+
+	<div class="container">
+		<div class="slideup" ng-view>
+			Loading app. Please, wait, don't go :)
+		</div>
+	</div>
 
 	<div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
@@ -32,6 +36,28 @@
 	    </div>
 	  </div>
 	</div>
+
+	<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+		  <div class="modal-header">
+	        <h5 class="modal-title">Houston, we have a problem!</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <p id="alert-text"></p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Okay, don't worry</button>
+	      </div>
+	    </div>
+	    </div>
+	  </div>
+	</div>
+
+
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>

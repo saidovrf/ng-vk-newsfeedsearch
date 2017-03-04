@@ -2,12 +2,10 @@
 <div class="row justify-content-md-center">
     <div class="col-md-6">
         <div class="input-group">
-            <input type="text" class="form-control" ng-model="vm.query" placeholder="Search for...">
+            <input type="text" ng-enter-click="vm.searchPosts()" class="form-control" ng-disabled="vm.searchProgress" ng-model="vm.query" placeholder="Search for...">
             <span class="input-group-btn">
-        <button type="button" ng-click="vm.searchPosts()" class="btn btn-secondary"><i class="fa fa-vk" aria-hidden="true"></i> search</button>
+        <button type="button" ng-click="vm.searchPosts()" ng-disabled="vm.searchProgress" class="btn btn-secondary"><i class="fa fa-vk" aria-hidden="true"></i> search</button>
       </span>
         </div>
     </div>
 </div>
-
-
