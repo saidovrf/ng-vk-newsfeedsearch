@@ -16,5 +16,6 @@ Application wroted with:
 * Angular Carousel
 * JQuery
 * Twitter Bootstrap
+* Font Awesome
 
 Here is the link for [GitHub Pages](https://saidovrf.github.io/ng-vk-newsfeedsearch/)
